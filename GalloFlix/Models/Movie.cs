@@ -8,7 +8,7 @@ public class Movie
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
+    public uint Id { get; set; }
 
     [Display(Name = "Título Original")]
     [Required(ErrorMessage = "Por favor, informe o Título Original")]
@@ -26,7 +26,7 @@ public class Movie
 
     [Column(TypeName = "Year")]
     [Display(Name = "Ano de estreia")]
-    public Int16 MyProperty { get; set; }
+    public Int16 MovieYear { get; set; }
 
     [Display(Name = "Duração")]
     [Required(ErrorMessage = "Por favor, informe a duração")]
@@ -46,4 +46,6 @@ public class Movie
     public string HourDuration { get { 
         return TimeSpan.FromMinutes(Duration).ToString(@"%h'h 'mm'min'");
     } }
+
+    public ICollection<MovieGenre> Genres { get; set; }
 }
